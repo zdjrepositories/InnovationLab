@@ -436,25 +436,27 @@
     -webkit-transition: all 500ms;
     transition: all 500ms;
 }
+
 .index-third-content:hover {
     height: 243px;
     -webkit-transition: all 500ms;
     transition: all 500ms;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
 }
+
 .index-third-content-border {
-     display: inline-block;
-     left: 2px;
+    display: inline-block;
+    left: 2px;
     width: 0px;
-     height: 4px;
-     position: absolute;
-     z-index: 5;
-     background-color: #3dcd58;
-     bottom: 0;
-     position: absolute;
-     -webkit-transition: width  cubic-bezier(0, 0, 0.25, 1);
-     transition: width  cubic-bezier(0, 0, 0.25, 1);
- }
+    height: 4px;
+    position: absolute;
+    z-index: 5;
+    background-color: #3dcd58;
+    bottom: 0;
+    position: absolute;
+    -webkit-transition: width cubic-bezier(0, 0, 0.25, 1);
+    transition: width cubic-bezier(0, 0, 0.25, 1);
+}
 
 .index-third-content:hover .index-third-content-border {
     width: 240px;
@@ -462,21 +464,22 @@
     transition: width 500ms;
 }
 
-.index-third-content1,.index-third-content5 {
+.index-third-content1, .index-third-content5 {
     left: 0px;
 }
 
-.index-third-content2,.index-third-content6 {
+.index-third-content2, .index-third-content6 {
     left: 254px;
 }
 
-.index-third-content3,.index-third-content7 {
+.index-third-content3, .index-third-content7 {
     left: 508px;
 }
 
-.index-third-content4,.index-third-content8 {
+.index-third-content4, .index-third-content8 {
     left: 762px;
 }
+
 .index-third-content img {
     display: inline-block;
     width: 50px;
@@ -1048,9 +1051,12 @@
 .index-fifth {
     width: 100%;
     height: 679px;
+    text-align: center;
     background-color: #ffffff;
 }
-
+.index-fifth-contents{
+    text-align: center;
+}
 .index-fifth-bg img {
     display: inline-block;
     width: 1024px;
@@ -1089,7 +1095,7 @@
 .index-fifth-title-bottom {
     height: 32px;
     margin: 12px auto;
-    font-family: Arial Rounded MT Pro Light Light;
+    font-family: Arial Rounded MT Pro Light;
     opacity: 0.8;
     font-family: PingFangSC;
     font-size: 24px;
@@ -1100,8 +1106,9 @@
 .index-fifth-banner {
     width: 1024px;
     height: 391px;
-    margin: 150px auto;
-    top: -253px;
+    margin: -115px auto;
+
+    text-align: center;
     position: relative;
     z-index: 5;
     opacity: 0;
@@ -1111,7 +1118,8 @@
     display: inline-block;
     width: 312px;
     height: 391px;
-    margin-right: 25px;
+    margin-left:12px;
+    margin-right:12px;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.08);
     background-color: #ffffff;
     text-align: center;
@@ -1144,6 +1152,6 @@
     line-height: 1.71;
     letter-spacing: normal;
     text-align: justify;
-    color: #525252;
+    color: #666;
     margin: 18px auto;
 }
