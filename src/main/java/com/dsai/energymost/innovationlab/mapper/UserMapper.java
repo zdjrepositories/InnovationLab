@@ -15,5 +15,7 @@ public interface UserMapper {
      */
     @Select("select count(*) from user where email =#{email} and `password`=#{password} ")
     Integer selectUser(User user);
+    @Select("select count(*) from user where email =#{email}")
+    Integer selectEmail(User user);
 }
 

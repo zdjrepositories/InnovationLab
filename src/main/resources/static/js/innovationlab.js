@@ -88,28 +88,9 @@ function getUser(page) {
         success: function (data) {
             var user=data;
             if(user!=""){
-               var text="<div class='head-photo'><div class='head-photo-text'>" + user.substring(0, 1) + "</div> </div> <a href='javascript:;'  onclick=exitUser('"+page+"')>退出登录</a>"
+               var text=" <a href='javascript:;'  onclick=exitUser('"+page+"')><div class='head-photo'><div class='head-photo-text'>" + user.substring(0, 1) + "</div> </div>退出登录</a>"
                 $(".head-login").html(text);
-                    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
-                    var isOpera = userAgent.indexOf("Opera") > -1;
-                    if (isOpera) {
-                        $('.head-photo-text').css("top","-7px")
-                    }; //判断是否Opera浏览器
-                    if (userAgent.indexOf("Firefox") > -1) {
-                       $('.head-photo-text').css("top","-4px")
-                    } //判断是否Firefox浏览器
-                    if (userAgent.indexOf("Chrome") > -1){
-                  $('.head-photo-text').css("top","-7px")
-                 }
-                    if (userAgent.indexOf("Safari") > -1) {
-                       $('.head-photo-text').css("top","-7px")
-                    } //判断是否Safari浏览器
-                    if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
-                        $('.head-photo-text').css("top","-7px")
-                    }; //判断是否IE浏览器
-if (userAgent.indexOf("Edge") > -1) {
-                       $('.head-photo-text').css("top","-4px")
-                    } //判断是否Safari浏览器
+
                 }
         }
     })
@@ -124,7 +105,7 @@ var result = confirm('确认退出登录？');
               data: {},
               success: function (data) {
 
-                      $(".head-login").html("<img class='head-login' src='images/head_white.png'/> <a href='login.html?page=" + page + ">用户登录</a>");
+                      $(".head-login").html("<a href='login.html?page=" + page + "><img class='head-login' src='images/head_white.png'/> 用户登录</a>");
                       window.location.href = page + ".html";
                   }
           })

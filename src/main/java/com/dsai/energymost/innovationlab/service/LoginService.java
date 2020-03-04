@@ -10,4 +10,5 @@ import java.util.List;
 public interface LoginService {
 
 	int userLogin(User user);
+	int getEmail(User user);
 } 

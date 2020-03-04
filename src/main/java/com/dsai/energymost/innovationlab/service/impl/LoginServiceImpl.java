@@ -25,4 +25,11 @@ public class LoginServiceImpl implements LoginService {
 		login=userMapper.selectUser(user);
 		return login;
 	}
+
+	@Override
+	public int getEmail(User user) {
+		int email=0;
+		email=userMapper.selectEmail(user);
+		return email;
+	}
 }

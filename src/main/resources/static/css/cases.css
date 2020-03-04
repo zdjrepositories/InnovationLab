@@ -53,7 +53,7 @@
     float: left;
     top: 228px;
     height: 42px;
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
     font-size: 37px;
     font-weight: 300;
     font-stretch: normal;
@@ -271,7 +271,7 @@
     padding-top: 80px;
     height: 85px;
     margin:57px auto ;
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
     font-size: 36px;
     font-weight: normal;
     font-stretch: normal;
@@ -285,7 +285,7 @@
     opacity: 0;
 }
 .cases-third-title-top{
-    font-family:  Arial Rounded MT Pro;
+    font-family:  Arial Rounded MT Pro Light;
 }
 .cases-third-title-center{
     width: 47px;
@@ -297,7 +297,7 @@
     height: 27px;
     margin: 15px auto;
     padding-bottom: 33px;
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
     font-size: 24px;
     font-weight: normal;
     font-stretch: normal;
@@ -380,7 +380,7 @@
     height: 19px;
     margin-left: 75px;
     margin-top: 35px;
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
     font-size: 16px;
     font-weight: normal;
     font-stretch: normal;
@@ -394,7 +394,7 @@
     height: 16px;
     margin-left: 75px;
     margin-top: 7px;
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
@@ -410,11 +410,6 @@ margin-top: 32px;
     margin-left: 30px;
     font-family: Arial Rounded MT;
     font-size: 18px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
     color: #333333;
     text-align: left;
 }
@@ -423,7 +418,7 @@ margin-top: 32px;
     margin-bottom: 30px;
     margin-top: 10px;
     margin-left: 30px;
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
     font-size: 14px;
     font-weight: normal;
     font-stretch: normal;

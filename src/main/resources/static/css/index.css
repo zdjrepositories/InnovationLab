@@ -47,7 +47,7 @@
 }
 
 .index-first-banner-title p {
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
     font-size: 60px;
     font-weight: 800;
     font-stretch: normal;
@@ -190,7 +190,7 @@
 }
 
 .index-second-title-top {
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
 }
 
 .index-second-title-center {
@@ -203,7 +203,7 @@
 .index-second-title-bottom {
     height: 32px;
     margin: 11px auto;
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
     font-size: 28px;
     font-weight: normal;
     font-stretch: normal;
@@ -339,7 +339,7 @@
 }
 
 .en {
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
 }
 
 .index-second-banner samp {
@@ -382,7 +382,7 @@
 }
 
 .index-third-title-top {
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
 }
 
 .index-third-title-center {
@@ -395,7 +395,7 @@
 .index-third-title-bottom {
     height: 32px;
     margin: 11px auto;
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
     font-size: 28px;
     font-weight: normal;
     font-stretch: normal;
@@ -590,7 +590,7 @@
 .index-fourth-title-bottom {
     height: 32px;
     margin: 12px auto;
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light;
     font-size: 28px;
     font-weight: normal;
     font-stretch: normal;
@@ -919,6 +919,9 @@
 
 .index-fourth-content-like-sum {
     height: 20px;
+
+    top: 3px;
+    position: relative;
     margin-left: 20px;
     font-size: 14px;
     font-weight: normal;
@@ -1072,10 +1075,6 @@
     height: 50px;
     font-size: 36px;
     font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
     text-align: center;
     color: #333333;
 }
@@ -1090,15 +1089,10 @@
 .index-fifth-title-bottom {
     height: 32px;
     margin: 12px auto;
-    font-family: Arial Rounded MT Pro;
+    font-family: Arial Rounded MT Pro Light Light;
     opacity: 0.8;
     font-family: PingFangSC;
     font-size: 24px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
     text-align: center;
     color: #333333;
 }
@@ -1134,7 +1128,7 @@
     margin-top: 5px;
     font-family: PingFangSC;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.33;
@@ -1146,11 +1140,7 @@
 
 .index-fifth-content-text {
     width: 272px;
-    font-family: PingFangSC;
     font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
     line-height: 1.71;
     letter-spacing: normal;
     text-align: justify;

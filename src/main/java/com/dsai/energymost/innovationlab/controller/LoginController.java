@@ -18,6 +18,15 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
     private User user=null;
+    @PostMapping("/getEmail")
+    @ResponseBody
+    public String getEmail(HttpServletRequest req, HttpServletResponse res) {
+        user = new User();
+        user.setEmail(req.getParameter("email"));
+        int email = loginService.getEmail(user);
+        System.out.println(email);
+        return email+"";
+    }
     @PostMapping("/login")
     @ResponseBody
     public String userLogin(HttpServletRequest req, HttpServletResponse res) {
