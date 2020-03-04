@@ -24,7 +24,6 @@ public class LoginController {
         user = new User();
         user.setEmail(req.getParameter("email"));
         int email = loginService.getEmail(user);
-        System.out.println(email);
         return email+"";
     }
     @PostMapping("/login")
