@@ -1,0 +1,131 @@
+html, body {
+    min-width: 1024px;
+    height: 100%;
+    text-align: center;
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+}
+.head{
+    min-width:1024px;
+    width: 100%;
+    height: 70px;
+    z-index: 999;
+    background-color: #3dcd58;
+    position: fixed;
+    color: white;
+    top: 0;
+    position:relative;
+}
+.head-logo {
+    height: 43px;
+    text-align: center;
+    float: left;
+    margin: 14px 0 0 60px;
+}
+
+.head-logo-left {
+    font-size: 36px;
+    font-family: Arial Rounded MT Pro ExtraBold;
+    color: #ffffff;
+}
+.head div{
+    color: #fff;
+}
+.head-logo-right {
+    font-size: 20px;
+    font-family: Arial Rounded MT Pro;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+.demo-logo{
+    font-size: 20px;
+    float: right;
+    top: 23px;
+    right: 60px;
+    position: absolute;
+}
+
+.await-ing{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    animation: rotation 2s linear infinite;
+    -moz-animation: rotation 2s linear infinite;
+    -webkit-animation: rotation 2s linear infinite;
+    -o-animation: rotation 2s linear infinite;
+}
+@-webkit-keyframes rotation{
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+
+.foot{
+    width: 100%;
+    height: 132px;
+    bottom: 0px;
+    position:relative;
+    background-color: #333333;
+}
+.foot-left-img{
+    width: 432px;
+    height: 132px;
+    z-index:5 ;
+    float: left;
+}
+.foot-right-img{
+    width: 116px;
+    height: 132px;
+    bottom: 0;
+    right: 0;
+    z-index: 5;
+    float: right;
+}
+.foot-content{
+    width: 1024px;
+    height: 132px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    margin:0 auto;
+}
+.foot-logo{
+    height: 59px;
+    top: 50%;
+    transform: translateY(-50%);/* 元素往下位移自身高度50%的距离 */
+    float: left;
+    font-size: 27px;
+    text-align: center;
+    color: #ffffff;
+    position: absolute;
+}
+.foot-logo-left{
+    font-family: Arial Rounded MT Pro ExtraBold;
+}
+.foot-logo-right{
+    font-family: Arial Rounded MT Pro;
+}
+.foot-logo-left{
+    font-size: 48.7px;
+}
+.foot-text {
+    width: 426px;
+    height: 72px;
+    opacity: 0.8;
+    margin-top: 30px;
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: right;
+    float: right;
+    color: #ffffff;
+}

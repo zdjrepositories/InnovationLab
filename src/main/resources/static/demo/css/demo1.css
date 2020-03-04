@@ -1,0 +1,63 @@
+.demo{
+    width: 1024px;
+    margin: auto;
+    padding: 30px;
+    height: 650px;
+}
+.demo-diagnose{
+    width: 420px;
+    height: 630px;
+    text-align: center;
+    background-color: #e6e6e6;
+    border-radius: 8px;
+    float: left;
+}
+.demo-title{
+    padding-top: 20px;
+    font-size: 25px;
+    color: #3dcd58;
+}
+.demo-diagnose-checkbox{
+    padding: 15px;
+    margin-left: 10px;
+    text-align: left;
+    line-height: 25px;
+}
+.demo-analyze{
+    width: 420px;
+    height: 630px;
+    text-align: center;
+    background-color: #e6e6e6;
+    border-radius: 8px;
+    float: right;
+}
+
+.demo-button {
+    width: 351px;
+    height: 44px;
+    margin: 15px auto;
+    border-radius: 4px;
+    background-color: #3dcd58;
+}
+
+.demo-button:hover {
+    background-color: #64d981;
+}
+.demo-button-text{
+    padding-top: 11px;
+    height: 22px;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    margin: 5px auto;
+    text-align: center;
+    color: #ffffff;
+}
+.demo-analyze p{
+margin-left:20px;
+line-height: 15px;
+  text-align:left;
+  }

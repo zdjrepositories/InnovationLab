@@ -1,0 +1,86 @@
+.demo {
+    width: 1024px;
+    height: 500px;
+    margin: 50px auto 50px auto;
+}
+
+.demo-left {
+    width: 500px;
+    float: left;
+    margin-top: 10px;
+}
+
+.demo-left-content {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+select:focus {
+    outline: none;
+    border: 1px solid #3dcd58;
+}
+
+select {
+    width: 104px;
+    height: 35px;
+    float: left;
+    margin: 5px 15px 0px 20px;
+    padding: 2px 4px 2px 4px;
+    vertical-align: middle;
+    border: 1px solid #3dcd58;
+    -moz-border-radius: 0.2em;
+    -webkit-border-radius: 0.2em;
+    border-radius: 2px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 16px;
+    color: #333333;
+    cursor: pointer;
+}
+
+.demo-button {
+    width: 301px;
+    height: 44px;
+    float: right;
+    border-radius: 4px;
+    background-color: #3dcd58;
+}
+
+.demo-button:hover {
+    background-color: #64d981;
+}
+
+.demo-button-text{
+    padding-top: 10px;
+    height: 22px;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+.demo-left>img {
+    display: inline-block;
+    width: 480px;
+    height: 400px;
+    margin-bottom: 30px;
+}
+
+.demo-right {
+    width: 400px;
+    height: 390px;
+    padding: 50px;
+    float: right;
+    text-align: left;
+    border-radius: 10px;
+    background-color: #e6e6e6;
+}
+
+.demo-right-text {
+    line-height: 25px;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="施耐德电气, 创新实验室">
+    <meta name="author" content="张冬军">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
+    <title>创新实验室-登录</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+</head>
+<link href="css/login.css" rel="stylesheet">
+<body>
+<div class="login-first">
+
+    <div class="head-logo">
+        <a href="index.html"><span class="head-logo-left">DS</span>
+            <samp class="head-logo-right">Innovation Lab</samp></a>
+    </div>
+    <img class="login-left" src="images/login_left.png"/>
+    <img class="login-left1" src="images/login_left1.png"/>
+    <img class="login-left2" src="images/login_left2.png"/>
+    <img class="login-conter" src="images/login_conter.png"/>
+    <img class="login-right" src="images/login_right.png"/>
+    <img class="login-right1" src="images/login_right1.png"/>
+    <img class="login-right2" src="images/login_right2.png"/>
+    <img class="index-first-banner-bg1" src="images/banner_bg_l@2x.png"/>
+    <div class="login-title">欢迎来到 Innovation Lab</div>
+</div>
+<div class="login-banner">
+    <div class="login-input login-input-mail">请输入您的邮箱</div>
+    <input type="text" id="email" autocomplete="off" name="email"><br/>
+    <div id="lns"></div>
+    <div class="login-error login-input-mail-error"></div>
+    <div class="login-input login-input-password">请输入登录密码</div>
+    <input type="password" autocomplete="off" id="password"  name="password"/><br/>
+    <div class="login-error login-input-password-error"></div>
+    <a href="javascript:;" class="login-pwd" onclick="pwd()"><img src="images/pwd.png"/> </a>
+    <a href="javascript:;" class="login-pwd-no" onclick="pwdno()"><img src="images/pwd_no.png"/> </a>
+    <div class="login-input login-input-code">请输入验证码</div>
+    <input type="number" id="code" autocomplete="off"  name="code"/><br/>
+    <div class="login-error login-input-code-error"></div>
+    <a href="javascript:;" onclick="code()" class="login-code-img"><div  class="login-code-text"></div></a>
+    <button type="button" onclick="login()" class="login-button">登录</button>
+    <div class="login-banner-foot">Innovation Lab目前处于内测阶段，申请账号请联系：张洋子
+        <a class="login-mail" target="_blank" href="mailto:yangzi.zhang@se.com?subject=申请创新实验室平台访问账号">yangzi.zhang@se.com</a>
+    </div>
+</div>
+<div class="login-foot">
+    ©2019版权所有 施耐德电气（中国）有限公司 京 ICP 备 05053940 号-2
+</div>
+</body>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/innovationlab.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+
+</html>

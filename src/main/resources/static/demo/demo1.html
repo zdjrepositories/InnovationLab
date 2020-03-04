@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="施耐德电气, 创新实验室,EA预诊断">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
+    <title>创新实验室-EA预诊断</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
+</head>
+<link href="css/demo.css" rel="stylesheet">
+<link href="css/demo1.css" rel="stylesheet">
+<body>
+<div class="head">
+    <div class="head-logo">
+        <a href="../index.html"><span class="head-logo-left">DS</span>
+            <samp class="head-logo-right">Innovation Lab</samp></a>
+    </div>
+    <a href="demo1.html"><div class="demo-logo">EA预诊断</div></a>
+</div>
+<div class="demo">
+    <div class="demo-diagnose">
+        <div class="demo-title">诊断点位</div>
+        <div class="demo-diagnose-checkbox">
+            <input name="point" type="checkbox" checked="checked" value="1"/>FAU送风机状态<br/>
+            <input name="point" type="checkbox" checked="checked" value="2"/>FAU水阀开关状态<br/>
+            <input name="point" type="checkbox" checked="checked" value="3"/>FAU电加热器状态<br/>
+            <input name="point" type="checkbox" checked="checked" value="4"/>FAU风流开关状态<br/>
+            <input name="point" type="checkbox" checked="checked" value="5"/>FAU送风机命令状态<br/>
+            <input name="point" type="checkbox" checked="checked" value="6"/>FAU送风阀开关状态<br/>
+            <input name="point" type="checkbox" checked="checked" value="7"/>FAU新风阀开关状态<br/>
+            <input name="point" type="checkbox" checked="checked" value="8"/>FAU冷水阀开关状态<br/>
+            <input name="point" type="checkbox" checked="checked" value="9"/>FAU热水阀开关状态<br/>
+            <input name="point" type="checkbox" checked="checked" value="10"/>室外干球温度大于13°C<br/>
+            <input name="point" type="checkbox" checked="checked" value="11"/>室内外焓差大于50kj/kg<br/>
+            <input name="point" type="checkbox" checked="checked" value="12"/>室内CO2浓度小于800ppm<br/>
+            <input name="point" type="checkbox" checked="checked" value="13"/>室内CO2浓度大于1000ppm<br/>
+            <input name="point" type="checkbox" checked="checked" value="14"/>FAU水阀阀位状态大于95%<br/>
+            <input name="point" type="checkbox" checked="checked" value="15"/> 冷冻水总管供水温度小于20°C<br/>
+            <input name="point" type="checkbox" checked="checked" value="16"/>FAU新风阀阀位开度大于最小开度<br/>
+            <input name="point" type="checkbox" checked="checked" value="17"/>室外干球温度小于室内温度设定值<br/>
+            <input name="point" type="checkbox" checked="checked" value="18"/>FAU送风温度设定值小于室内露点温度<br/>
+            <input name="point" type="checkbox" checked="checked" value="19"/>FAU送风温度减送风温度设定值大于2°C<br/>
+            <a href="javascript:;" onclick="dispose()" class="demo-button"><div class="demo-button-text demo-button-text-dispose">智能诊断</div></a>
+        </div>
+    </div>
+    <div class="demo-analyze">
+        <div class="demo-title">可用诊断算法</div>
+        <a href="demo1_result.html" onclick="analyze()" class="demo-button"><div class="demo-button-text demo-button-text-analyze">智能分析</div></a>
+    </div>
+
+
+</div>
+
+<footer class="foot">
+    <img class="foot-left-img" src="images/foot_bg_l@2x.png"/>
+    <img class="foot-right-img" src="images/foot_bg_r@2x.png"/>
+    <div class="foot-content">
+        <div class="foot-logo">
+            <span class="foot-logo-left">DS</span>
+            <samp class="foot-logo-right">Innovation Lab</samp>
+        </div>
+        <div class="foot-text">
+            <p>上线时间：2020年2月</p>
+            <p>©版权所有 施耐德电气（中国）有限公司 京ICP备05053940号-5</p>
+        </div>
+    </div>
+</footer>
+</body>
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+<script type="text/javascript" src="js/demo1.js"></script>
+</html>
