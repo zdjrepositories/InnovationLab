@@ -11,10 +11,9 @@
     height: 433px;
     margin: auto;
     text-align: center;
-    position: absolute;
+    position: relative;
     top: 70px;
-    left: 50%;
-    transform: translateX(-50%); /* 元素往下位移自身高度50%的距离 */
+
 }
 
 .cases-first-title {

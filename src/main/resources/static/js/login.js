@@ -1,6 +1,6 @@
 function login() {
-        $(".login-input-error").css("opacity", 0);
-        $("input").css("border-bottom-color", "#c0c0c0");
+    $(".login-error").css("opacity", 0);
+    $("input").css("border-bottom-color", "#d9d9d9");
     if ($('#email').val() == "") {
         $("input[name=email]").css("border-bottom-color", "#ff4d4d");
         $(".login-input-mail-error").text("请输入您的邮箱");
@@ -9,37 +9,50 @@ function login() {
         $("input[name=password]").css("border-bottom-color", "#ff4d4d");
         $(".login-input-password-error").text("请输入登录密码")
         $(".login-input-password-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
-    }else if ($('#code').val() == "") {
+    } else if ($('#code').val() == "") {
         $("input[name=code]").css("border-bottom-color", "#ff4d4d");
         $(".login-input-code-error").text("请输入验证码")
         $(".login-input-code-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
-    } else if ($('#email').val().indexOf("@se.com") < 0 ) {
+    } else if ($('#email').val().indexOf("@se.com") < 0) {
         $("input[name=email]").css("border-bottom-color", "#ff4d4d");
         $(".login-input-mail-error").text("邮箱格式不正确")
         $(".login-input-mail-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
-    }  else if ($('#code').val() == "") {
-        $("input[name=code]").css("border-bottom-color", "#ff4d4d");
-        $(".login-input-code-error").text("请输入验证码")
-        $(".login-input-code-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
-    } else if ($('#code').val() != sum) {
-        $("input[name=code]").css("border-bottom-color", "#ff4d4d");
-        $(".login-input-code-error").text("验证码不正确")
-        $(".login-input-code-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
     } else {
-        $(".login-button").html("<img class='await-ing' src='images/circle.png'>&nbsp;&nbsp;&nbsp;正在登录...");
-        $(".login-button").css("background-color", "#64d975");
-        $.post("/innovationlab/login", {"email": $('#email').val(), "password": $('#password').val()}, function (data) {
-            if (data == "1") {
-                $(".login-button").html("<img class='succeed-img' src='images/true.png'>&nbsp;&nbsp;&nbsp;登录成功");
-                setTimeout("login_succeed()", 800);
+        $.post("/innovationlab/getEmail", {
+                "email": $('#email').val()
+            }, function (data) {
+                console.log(data);
+                if (data != "1") {
+                    $("input[name=email]").css("border-bottom-color", "#ff4d4d");
+                    $(".login-input-mail-error").text("您的邮箱尚未开通权限")
+                    $(".login-input-mail-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
+                } else {
+                    if ($('#code').val() != sum) {
+                        $("input[name=code]").css("border-bottom-color", "#ff4d4d");
+                        $(".login-input-code-error").text("验证码不正确")
+                        $(".login-input-code-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
+                    } else {
+                        $(".login-button").html("<img class='await-ing' src='images/circle.png'>&nbsp;&nbsp;&nbsp;正在登录...");
+                        $(".login-button").css("background-color", "#64d975");
+                        $.post("/innovationlab/login", {
+                            "email": $('#email').val(),
+                            "password": $('#password').val()
+                        }, function (data) {
+                            if (data == "1") {
+                                $(".login-button").html("<img class='succeed-img' src='images/true.png'>&nbsp;&nbsp;&nbsp;登录成功");
+                                setTimeout("login_succeed()", 800);
+                            } else {
+                                $("input[name=password]").css("border-bottom-color", "#ff4d4d");
+                                $(".login-input-password-error").text("登录密码不正确");
+                                $(".login-input-password-error").css("opacity", 1);
+                                $(".login-banner button").text("登录");
+                            }
+                        })
+                    }
 
-            } else {
-                $("input[name=password]").css("border-bottom-color", "#ff4d4d");
-                $(".login-input-password-error").text("登录密码不正确");
-                $(".login-input-password-error").css("opacity", 1);
-                $(".login-banner button").text("登录");
+                }
             }
-        })
+        )
     }
 }
 
@@ -82,54 +95,41 @@ function pwdno() {
 var sum;
 $(function () {
     code();
-    $("input").change(function () {
-        login_load();
-    })
+   $('#login_botton').focus();
 
-    $(".login-input-mail").focus();
-    if ($("input[name=email]").val() != "") {
-        $(".login-input-mail").css("color", "#3dcd58");
-        $(".login-input-mail").css("top", "45px");
-        $(".login-input-mail").css("font-size", "12px");
-        $(".login-input-mail-error").css("opacity", 0);
-        $("input[name=email]").css("border-bottom-color", "#c0c0c0");
-    }
-    if ($("input[name=password]").val() != "") {
-        $("#lns").hide();
-        $(".login-input-password").css("color", "#3dcd58");
-        $(".login-input-password").css("top", "125px");
-        $(".login-input-password").css("font-size", "12px");
-        $(".login-input-password-error").css("opacity", 0);
-        $("input[name=password]").css("border-bottom-color", "#c0c0c0");
-
-    }
-
-
-    $("#email").focus(function () {
-        $(".login-input-mail").css("color", "#3dcd58");
-        $(".login-input-mail").css("top", "45px");
-        $(".login-input-mail").css("font-size", "12px");
-        $(".login-input-mail-error").css("opacity", 0);
-        $("input[name=email]").css("border-bottom-color", "#c0c0c0");
+    $("input[name=email]").keydown(function () {
+        text_up(1)
     });
-    $("#email").blur(function () {
+    $("input[name=password]").keydown(function () {
+        text_up(2)
+    });
+    $("input[name=code]").keydown(function () {
+        text_up(3)
+    });
+
+
+    $("input[name=email]").focus(function () {
+        text_up(1)
+    });
+    $("input[name=email]").blur(function () {
+
+        $("#lns").hide();
         if ($("input[name=email]").val() == "") {
-            $(".login-input-mail").css("color", "#999");
-            $(".login-input-mail").css("top", "66px");
-            $(".login-input-mail").css("font-size", "16px");
+            text_down(1);
         }
         if ($('#email').val() == "") {
             $("input[name=email]").css("border-bottom-color", "#ff4d4d");
             $(".login-input-mail-error").text("请输入您的邮箱");
             $(".login-input-mail-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
-        } else if ($('#email').val().indexOf("@se.com") < 0 ) {
+        } else if ($('#email').val().indexOf("@se.com") < 0) {
             $("input[name=email]").css("border-bottom-color", "#ff4d4d");
             $(".login-input-mail-error").text("邮箱格式不正确");
             $(".login-input-mail-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
-        }
-        if ($('#email').val().indexOf("@se.com") > 0 ) {
+        } else if ($('#email').val().indexOf("@se.com") > 0) {
             $.post("/innovationlab/getEmail", {
-                "email": $('#email').val()}, function(data) { console.log(data);
+                    "email": $('#email').val()
+                }, function (data) {
+                    console.log(data);
                     if (data != "1") {
                         $("input[name=email]").css("border-bottom-color", "#ff4d4d");
                         $(".login-input-mail-error").text("您的邮箱尚未开通权限")
@@ -141,19 +141,11 @@ $(function () {
 
     });
     $("#password").focus(function () {
-        $("#lns").hide();
-        $(".login-input-password").css("color", "#3dcd58");
-        $(".login-input-password").css("top", "125px");
-        $(".login-input-password").css("font-size", "12px");
-        $(".login-input-password-error").css("opacity", 0);
-        $("input[name=password]").css("border-bottom-color", "#d9d9d9");
-
+        text_up(2)
     });
     $("#password").blur(function () {
         if ($("input[name=password]").val() == "") {
-            $(".login-input-password").css("color", "#999");
-            $(".login-input-password").css("top", "146px");
-            $(".login-input-password").css("font-size", "16px");
+           text_down(2)
         }
         if ($('#password').val() == "") {
             $("input[name=password]").css("border-bottom-color", "#ff4d4d");
@@ -175,19 +167,11 @@ $(function () {
         }
     });
     $("#code").focus(function () {
-        $("#lns").hide();
-        $(".login-input-code").css("color", "#3dcd58");
-        $(".login-input-code").css("top", "205px");
-        $(".login-input-code").css("font-size", "12px");
-        $(".login-input-code-error").css("opacity", 0);
-        $("input[name=code]").css("border-bottom-color", "#d9d9d9");
-
+       text_up(3)
     });
     $("#code").blur(function () {
         if ($("input[name=code]").val() == "") {
-            $(".login-input-code").css("color", "#999");
-            $(".login-input-code").css("top", "226px");
-            $(".login-input-code").css("font-size", "16px");
+            text_down(3)
         }
         if ($('#code').val() == "") {
             $("input[name=code]").css("border-bottom-color", "#ff4d4d");
@@ -226,71 +210,35 @@ $(function () {
         } else {
             $("#lns").hide();
         }
-
     })
 })
 
-// function input_load() {
-//
-// }
-//
-// function email_load() {
-//     if ($("input[name=email]").val() == "") {
-//         $(".login-input-mail").css("color", "#999");
-//         $(".login-input-mail").css("top", "66px");
-//         $(".login-input-mail").css("font-size", "16px");
-//     } else {
-//         $(".login-input-code").css("color", "#3dcd58");
-//         $(".login-input-code").css("top", "205px");
-//         $(".login-input-code").css("font-size", "12px");
-//         $(".login-input-code-error").css("opacity", 0);
-//         $("input[name=code]").css("border-bottom-color", "#d9d9d9");
-//
-//         if ($('#email').val().indexOf("@se.com") < 0 && $('#email').val().indexOf("@non.se.com") < 0) {
-//             $("input[name=email]").css("border-bottom-color", "#ff4d4d");
-//             $(".login-input-mail-error").text("邮箱格式不正确")
-//             $(".login-input-mail-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
-//         }
-//     }
-// }
 function password_load() {
     if ($("input[name=password]").val() == "") {
-        $(".login-input-password").css("color", "#999");
-        $(".login-input-password").css("top", "146px");
+        $(".login-input-password").css("color", "#c0c0c0");
+        $(".login-input-password").css("top", "143px");
         $(".login-input-password").css("font-size", "16px");
     } else {
 
     }
 }
 
-function login_load() {
-    if ($("input[name=email]").val() == "") {
-        $(".login-input-mail").css("color", "#999");
-        $(".login-input-mail").css("top", "66px");
-        $(".login-input-mail").css("font-size", "16px");
-    } else {
+
+
+function text_up(num) {
+    if (num == 1) {
         $(".login-input-mail").css("color", "#3dcd58");
         $(".login-input-mail").css("top", "45px");
         $(".login-input-mail").css("font-size", "12px");
         $(".login-input-mail-error").css("opacity", 0);
         $("input[name=email]").css("border-bottom-color", "#d9d9d9");
-    }
-    if ($("input[name=password]").val() == "") {
-        $(".login-input-password").css("color", "#999");
-        $(".login-input-password").css("top", "146px");
-        $(".login-input-password").css("font-size", "16px");
-    } else {
+    } else if (num == 2) {
         $(".login-input-password").css("color", "#3dcd58");
         $(".login-input-password").css("top", "125px");
         $(".login-input-password").css("font-size", "12px");
         $(".login-input-password-error").css("opacity", 0);
         $("input[name=password]").css("border-bottom-color", "#d9d9d9");
-    }
-    if ($("input[name=code]").val() == "") {
-        $(".login-input-code").css("color", "#999");
-        $(".login-input-code").css("top", "226px");
-        $(".login-input-code").css("font-size", "16px");
-    } else {
+    } else if (num == 3) {
         $(".login-input-code").css("color", "#3dcd58");
         $(".login-input-code").css("top", "205px");
         $(".login-input-code").css("font-size", "12px");
@@ -299,12 +247,64 @@ function login_load() {
     }
 }
 
+function text_down(num) {
+    if (num == 1) {
+        $(".login-input-mail").css("color", "#3dcd58");
+        $(".login-input-mail").css("top", "45px");
+        $(".login-input-mail").css("font-size", "12px");
+        $(".login-input-mail-error").css("opacity", 0);
+        $("input[name=email]").css("border-bottom-color", "#d9d9d9");
+    } else if (num == 2) {
+        $(".login-input-password").css("color", "#3dcd58");
+        $(".login-input-password").css("top", "125px");
+        $(".login-input-password").css("font-size", "12px");
+        $(".login-input-password-error").css("opacity", 0);
+        $("input[name=password]").css("border-bottom-color", "#d9d9d9");
+    } else if (num == 3) {
+        $(".login-input-code").css("color", "#3dcd58");
+        $(".login-input-code").css("top", "205px");
+        $(".login-input-code").css("font-size", "12px");
+        $(".login-input-code-error").css("opacity", 0);
+        $("input[name=code]").css("border-bottom-color", "#d9d9d9");
+    }
+}
+
+function text_down(num) {
+    if (num == 1) {
+        $(".login-input-mail").css("color", "#c0c0c0");
+        $(".login-input-mail").css("top", "63px");
+        $(".login-input-mail").css("font-size", "16px");
+    } else if (num == 2) {
+        $(".login-input-password").css("color", "#c0c0c0");
+        $(".login-input-password").css("top", "143px");
+        $(".login-input-password").css("font-size", "16px");
+    } else if (num == 3) {
+        $(".login-input-code").css("color", "#c0c0c0");
+        $(".login-input-code").css("top", "223px");
+        $(".login-input-code").css("font-size", "16px");
+    }
+
+}
+
 
 function changeMail(num) {
     var c = $(".lns" + num).text();
     $("input[name=email]").val(c);
     $("#lns").hide();
     login_load();
+    if ($('#email').val().indexOf("@se.com") > 0) {
+        $.post("/innovationlab/getEmail", {
+                "email": $('#email').val()
+            }, function (data) {
+                console.log(data);
+                if (data != "1") {
+                    $("input[name=email]").css("border-bottom-color", "#ff4d4d");
+                    $(".login-input-mail-error").text("您的邮箱尚未开通权限")
+                    $(".login-input-mail-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
+                }
+            }
+        )
+    }
 }
 
 function code() {
