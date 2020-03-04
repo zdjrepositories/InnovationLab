@@ -1,4 +1,5 @@
 function login() {
+    $("#lns").hide();
     $(".login-error").css("opacity", 0);
     $("input").css("border-bottom-color", "#d9d9d9");
     if ($('#email').val() == "") {
@@ -112,8 +113,6 @@ $(function () {
         text_up(1)
     });
     $("input[name=email]").blur(function () {
-
-        $("#lns").hide();
         if ($("input[name=email]").val() == "") {
             text_down(1);
         }
@@ -141,6 +140,7 @@ $(function () {
 
     });
     $("#password").focus(function () {
+        $("#lns").hide();
         text_up(2)
     });
     $("#password").blur(function () {
@@ -167,6 +167,7 @@ $(function () {
         }
     });
     $("#code").focus(function () {
+        $("#lns").hide();
        text_up(3)
     });
     $("#code").blur(function () {
@@ -212,16 +213,26 @@ $(function () {
         }
     })
 })
-
-function password_load() {
-    if ($("input[name=password]").val() == "") {
-        $(".login-input-password").css("color", "#c0c0c0");
-        $(".login-input-password").css("top", "143px");
-        $(".login-input-password").css("font-size", "16px");
-    } else {
-
+function changeMail(num) {
+    alert("sd");
+    var c = $(".lns" + num).text();
+    $("input[name=email]").val(c);
+    $("#lns").hide();
+    if ($('#email').val().indexOf("@se.com") > 0) {
+        $.post("/innovationlab/getEmail", {
+                "email": $('#email').val()
+            }, function (data) {
+                console.log(data);
+                if (data != "1") {
+                    $("input[name=email]").css("border-bottom-color", "#ff4d4d");
+                    $(".login-input-mail-error").text("您的邮箱尚未开通权限")
+                    $(".login-input-mail-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
+                }
+            }
+        )
     }
 }
+
 
 
 
@@ -246,29 +257,6 @@ function text_up(num) {
         $("input[name=code]").css("border-bottom-color", "#d9d9d9");
     }
 }
-
-function text_down(num) {
-    if (num == 1) {
-        $(".login-input-mail").css("color", "#3dcd58");
-        $(".login-input-mail").css("top", "45px");
-        $(".login-input-mail").css("font-size", "12px");
-        $(".login-input-mail-error").css("opacity", 0);
-        $("input[name=email]").css("border-bottom-color", "#d9d9d9");
-    } else if (num == 2) {
-        $(".login-input-password").css("color", "#3dcd58");
-        $(".login-input-password").css("top", "125px");
-        $(".login-input-password").css("font-size", "12px");
-        $(".login-input-password-error").css("opacity", 0);
-        $("input[name=password]").css("border-bottom-color", "#d9d9d9");
-    } else if (num == 3) {
-        $(".login-input-code").css("color", "#3dcd58");
-        $(".login-input-code").css("top", "205px");
-        $(".login-input-code").css("font-size", "12px");
-        $(".login-input-code-error").css("opacity", 0);
-        $("input[name=code]").css("border-bottom-color", "#d9d9d9");
-    }
-}
-
 function text_down(num) {
     if (num == 1) {
         $(".login-input-mail").css("color", "#c0c0c0");
@@ -287,27 +275,9 @@ function text_down(num) {
 }
 
 
-function changeMail(num) {
-    var c = $(".lns" + num).text();
-    $("input[name=email]").val(c);
-    $("#lns").hide();
-    login_load();
-    if ($('#email').val().indexOf("@se.com") > 0) {
-        $.post("/innovationlab/getEmail", {
-                "email": $('#email').val()
-            }, function (data) {
-                console.log(data);
-                if (data != "1") {
-                    $("input[name=email]").css("border-bottom-color", "#ff4d4d");
-                    $(".login-input-mail-error").text("您的邮箱尚未开通权限")
-                    $(".login-input-mail-error").css("opacity", 1); //点击登录后显示loading，隐藏输入框
-                }
-            }
-        )
-    }
-}
 
 function code() {
+    $("#lns").hide();
     var numa = Math.floor(Math.random() * 11);
     var numb = Math.floor(Math.random() * 11);
     var x = Math.floor(Math.random() * 2);
