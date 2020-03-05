@@ -96,7 +96,7 @@ function pwdno() {
 var sum;
 $(function () {
     code();
-   $('#login_botton').focus();
+    $('#login_botton').focus();
 
     $("input[name=email]").keydown(function () {
         text_up(1)
@@ -106,6 +106,48 @@ $(function () {
     });
     $("input[name=code]").keydown(function () {
         text_up(3)
+    });
+    if ($("input[name=email]").val() != "") {
+        text_up(1)
+    }
+    $("input[name=email]").change(function () {
+        if ($("input[name=email]").val() != "") {
+            text_up(1)
+        }
+    })
+    $("input[name=email]").trigger("input");
+    $("input[name=email]").bind("input change", function () {
+        if ($("input[name=email]").val() != "") {
+            text_up(1)
+        }
+    });
+    if ($("input[name=password]").val() != "") {
+        text_up(2)
+    }
+    $("input[name=password]").change(function () {
+        if ($("input[name=password]").val() != "") {
+            text_up(2)
+        }
+    })
+    $("input[name=password]").trigger("input");
+    $("input[name=password]").bind("input change", function () {
+        if ($("input[name=password]").val() != "") {
+            text_up(3)
+        }
+    });
+    if ($("input[name=code]").val() != "") {
+        text_up(3)
+    }
+    $("input[name=code]").change(function () {
+        if ($("input[name=code]").val() != "") {
+            text_up(3)
+        }
+    })
+    $("input[name=code]").trigger("input");
+    $("input[name=code]").bind("input change", function () {
+        if ($("input[name=code]").val() != "") {
+            text_up(3)
+        }
     });
 
 
@@ -145,7 +187,7 @@ $(function () {
     });
     $("#password").blur(function () {
         if ($("input[name=password]").val() == "") {
-           text_down(2)
+            text_down(2)
         }
         if ($('#password').val() == "") {
             $("input[name=password]").css("border-bottom-color", "#ff4d4d");
@@ -168,7 +210,7 @@ $(function () {
     });
     $("#code").focus(function () {
         $("#lns").hide();
-       text_up(3)
+        text_up(3)
     });
     $("#code").blur(function () {
         if ($("input[name=code]").val() == "") {
@@ -213,8 +255,8 @@ $(function () {
         }
     })
 })
+
 function changeMail(num) {
-    alert("sd");
     var c = $(".lns" + num).text();
     $("input[name=email]").val(c);
     $("#lns").hide();
@@ -232,8 +274,6 @@ function changeMail(num) {
         )
     }
 }
-
-
 
 
 function text_up(num) {
@@ -257,6 +297,7 @@ function text_up(num) {
         $("input[name=code]").css("border-bottom-color", "#d9d9d9");
     }
 }
+
 function text_down(num) {
     if (num == 1) {
         $(".login-input-mail").css("color", "#c0c0c0");
@@ -273,7 +314,6 @@ function text_down(num) {
     }
 
 }
-
 
 
 function code() {
