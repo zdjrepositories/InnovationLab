@@ -1,0 +1,57 @@
+language: java
+jdk:
+  - openjdk8
+
+install: 
+  - mvn io.takari:maven:wrapper
+  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+env:
+  global:
+    - PROJECT="InnovationLab"
+    - PROJECT_NAME="com.dsai.energymost.innovationlab"
+    - ROLE="app"
+    - RELEASE_VERSION="2.0"
+      - PACKAGE_VERSION="2.0.${TRAVIS_BUILD_NUMBER}"
+    - DOCKER_NS="se-rem-test"
+    
+before_script:
+  - export ARTIFACT_NAME="${PROJECT}-${ROLE}-${TRAVIS_BRANCH}.zip"
+  - export TAG=`echo "$PROJECT-$ROLE:$TRAVIS_BRANCH-$PACKAGE_VERSION" | tr '[:upper:]' '[:lower:]'`
+  - export TAG_LATEST=`echo "$PROJECT-$ROLE:$TRAVIS_BRANCH-latest" | tr '[:upper:]' '[:lower:]'`
+  - export REMOTE_TAG=$DOCKER_REGISTRY/$DOCKER_NS/$TAG
+  - export REMOTE_TAG_LATEST=$DOCKER_REGISTRY/$DOCKER_NS/$TAG_LATEST
+
+script: 
+  - ./mvnw test -B
+  - mkdir artifact
+  - cp ./target/innovationlab.war ./artifact/${PROJECT}.war
+  - cp k8s.yaml ./artifact/
+  - cp deployment.yaml ./artifact
+  - cd artifact
+  - ls ./
+  - echo -n "${PACKAGE_VERSION}" > ./version.txt
+  - zip -r ../${ARTIFACT_NAME} ./
+  - cd ..
+  - docker build -t $TAG .
+
+before_deploy:
+  - 'curl -o upload.sh -H "Authorization: token ${GITHUB_TOKEN}" ${GITHUB_UPLOAD_SCRIPT}'
+  - cat ./upload.sh
+  - chmod a+x ./upload.sh
+  - IMAGEID=$(docker images $TAG -q)
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $DOCKER_REGISTRY
+  - docker tag $IMAGEID $REMOTE_TAG
+  - docker tag $IMAGEID $REMOTE_TAG_LATEST
+  - docker image ls
+     
+deploy:
+  - provider: script
+    skip_cleanup: true
+    on:
+      all_branches: true
+    script: >
+      docker push $REMOTE_TAG &&
+      docker push $REMOTE_TAG_LATEST &&
+      ./upload.sh ./${ARTIFACT_NAME} ${PROJECT} ${TRAVIS_BRANCH} ${ROLE} ${PACKAGE_VERSION} ${OSS_BUCKET} ${OSS_KEY} ${OSS_SECRET} &&
+      echo     

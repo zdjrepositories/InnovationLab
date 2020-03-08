@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ project }}-{{ role }}
+  name: {{ project }}-{{ role }}
+spec:
+  replicas: 1
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: {{ project }}-{{ role }}
+  template:
+    metadata:
+      name: {{ project }}-{{ role }}
+      labels:
+        app: {{ project }}-{{ role }}
+    spec:
+      volumes:
+      - name: timezone
+        hostPath:
+          path: /usr/share/zoneinfo/Asia/Shanghai
+      containers:
+      - image: {{ image_name }}
+        imagePullPolicy: Always
+        name: {{ project }}-{{ role }}
+        env:
+        - name: MYSQL_URL
+          value: ${AI_MYSQL_URL}
+        - name: MYSQL_USERNAME
+          value: ${AI_MYSQL_USERNAME}
+        - name: MYSQL_PASSWORD
+          value: ${AI_MYSQL_PASSWORD}
+        volumeMounts:
+        - mountPath: "/etc/localtime"
+          name: timezone
+          readOnly: true
+        ports:
+        - containerPort: 8005
+      imagePullSecrets:
+        - name: default-secret
+      nodeSelector:
+          envnode: ${ENV_NODE_LABEL}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: ${SERVICE_AI_ILAB_APP}
+  name: ${SERVICE_AI_ILAB_APP}
+spec:
+  ports:
+  - port: 80
+    targetPort: 8005
+    protocol: TCP
+  selector:
+    app: {{ project }}-{{ role }}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-${SERVICE_AI_ILAB_APP}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: ${HOST_I_AI_ILAB_APP}
+      http:
+        paths:
+          - backend:
+              serviceName: ${SERVICE_AI_ILAB_APP}
+              servicePort: 80
+            path:  
+    }
